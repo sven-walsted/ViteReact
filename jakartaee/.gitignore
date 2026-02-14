@@ -1,0 +1,2 @@
+# Do not commit generated code from npm
+src/main/resources/META-INF/resources/
