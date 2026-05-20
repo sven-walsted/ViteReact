@@ -1,12 +1,17 @@
+import { useState } from "react";
+
 import usFlagSmIcon from '@uswds/uswds/img/us_flag_small.png';
 import dotGovIcon from '@uswds/uswds/img/icon-dot-gov.svg';
 import httpsIcon from '@uswds/uswds/img/icon-https.svg';
 
 export default function GovBanner() {
+
+    const [isExpanded, setIsExpanded] = useState(false);
+
     return (
         <>
             <section
-                className="usa-banner"
+                className={`usa-banner ${isExpanded ? "usa-banner--expanded" : ""}`}
                 aria-label="Official website of the United States government"
             >
                 <div className="usa-accordion">
@@ -14,7 +19,7 @@ export default function GovBanner() {
                         <div className="usa-banner__inner">
                             <div className="grid-col-auto">
                                 <img
-                                    aria-hidden="true"
+                                    aria-hidden={true}
                                     className="usa-banner__header-flag"
                                     src={usFlagSmIcon}
                                     alt=""
@@ -29,16 +34,20 @@ export default function GovBanner() {
                             <button
                                 type="button"
                                 className="usa-accordion__button usa-banner__button"
-                                aria-expanded="false"
+                                aria-expanded={isExpanded}
                                 aria-controls="gov-banner-default"
+                                onClick={() => setIsExpanded(!isExpanded)}
                             >
-                                <span className="usa-banner__button-text">Here’s how you know</span>
+                                <span className="usa-banner__button-text">
+                                    {isExpanded ? "Hide official website info" : "Here's how you know"}
+                                </span>
                             </button>
                         </div>
                     </header>
                     <div
                         className="usa-banner__content usa-accordion__content"
                         id="gov-banner-default"
+                        hidden={!isExpanded}
                     >
                         <div className="grid-row grid-gap-lg">
                             <div className="usa-banner__guidance tablet:grid-col-6">
@@ -47,7 +56,7 @@ export default function GovBanner() {
                                     src={dotGovIcon}
                                     role="img"
                                     alt=""
-                                    aria-hidden="true"
+                                    aria-hidden={true}
                                 />
                                 <div className="usa-media-block__body">
                                     <p>
@@ -63,7 +72,7 @@ export default function GovBanner() {
                                     src={httpsIcon}
                                     role="img"
                                     alt=""
-                                    aria-hidden="true"
+                                    aria-hidden={true}
                                 />
                                 <div className="usa-media-block__body">
                                     <p>
@@ -78,7 +87,7 @@ export default function GovBanner() {
                                             className="usa-banner__lock-image"
                                             role="img"
                                             aria-labelledby="banner-lock-description"
-                                            focusable="false"
+                                            focusable={false}
                                         >
                                                 <title id="banner-lock-title">Lock</title>
                                                 <desc id="banner-lock-description">
