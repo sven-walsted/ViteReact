@@ -10,6 +10,9 @@ export default defineConfig({
     proxy: {
       '/resources': "http://localhost:8080"
     }
-  }, 
+  },
   base: '/jakartaee/',
+  build: {
+    outDir: "../jakartaee/src/main/resources/META-INF/resources"
+  }
 })
