@@ -8,7 +8,7 @@ export default defineConfig({
     port: 3000,
     open: '/',
     proxy: {
-      '/jakartaee/resources': "http://localhost:8080"
+      '/resources': "http://localhost:8080"
     }
   }, 
   base: '/jakartaee/',
